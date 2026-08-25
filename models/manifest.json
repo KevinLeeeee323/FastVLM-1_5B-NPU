@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "model_id": "fastvlm-1.5b-rk3588",
+  "target_platform": "rk3588",
+  "embedding_size": 1536,
+  "multimodal": {
+    "image_start": "",
+    "image_end": "",
+    "image_content": "<image>"
+  },
+  "runtime": {
+    "rkllm_version": "1.3.0",
+    "rknn_toolkit2_version": "2.3.2",
+    "default_max_context": 4096,
+    "default_max_new_tokens": 256,
+    "default_vision_cores": 3
+  },
+  "llm_contract": {
+    "quantization": "w8a8",
+    "build_max_context": 4096,
+    "build_npu_cores": 3
+  },
+  "artifacts": {
+    "vision": [
+      {
+        "file": "models/FastVLM-vision-rk3588.rknn",
+        "size": 357902002,
+        "sha256": "3908622647ee318665ad2feef517ebdf669183512e28f5cd6ed23135063c7848",
+        "resolution": 512,
+        "image_tokens": 64,
+        "embedding_size": 1536,
+        "precision": "fp16"
+      },
+      {
+        "file": "models/FastVLM-vision-1024-fp16-rk3588.rknn",
+        "size": 387281781,
+        "sha256": "bf67158172f151c69f80204ab0523bce432b59c123c61eeb58fbddb6f0910184",
+        "resolution": 1024,
+        "image_tokens": 256,
+        "embedding_size": 1536,
+        "precision": "fp16"
+      }
+    ],
+    "llm": {
+      "file": "models/FastVLM-1.5B-w8a8-rk3588.rkllm",
+      "size": 2050721972,
+      "sha256": "16302768966bad4e38b499c318428868ff261970d1ac66bad65a3eace82482bc",
+      "quantization": "w8a8",
+      "build_max_context": 4096,
+      "build_npu_cores": 3
+    }
+  }
+}

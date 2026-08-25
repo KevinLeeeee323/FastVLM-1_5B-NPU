@@ -1,0 +1,14 @@
+.vscode/
+__pycache__/
+*.py[cod]
+build/
+install/
+artifacts/
+*.onnx
+*.rknn
+*.rkllm
+*.build.log
+*.tmp
+models/*.part
+!models/manifest.json
+!models/README.md

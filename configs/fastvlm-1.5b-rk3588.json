@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "model_id": "fastvlm-1.5b-rk3588",
+  "target_platform": "rk3588",
+  "checkpoint": {
+    "url": "https://ml-site.cdn-apple.com/datasets/fastvlm/llava-fastvithd_1.5b_stage3.zip",
+    "directory": "artifacts/checkpoint/llava-fastvithd_1.5b_stage3",
+    "required_files": {
+      "config.json": "c245bfdb41ea53e9ef7179f92988b01b763b9ada91c5176cf75e3281bdeb4e39",
+      "model.safetensors": "2c6475ad0c81c8ad6a05165bc5d3be6b71cce3e7842d75ca06af1261d55b1308"
+    }
+  },
+  "embedding_size": 1536,
+  "vision": {
+    "precision": "fp16",
+    "default_resolution": 1024,
+    "resolutions": {
+      "512": {
+        "image_tokens": 64,
+        "onnx": "artifacts/onnx/FastVLM-vision-512.onnx",
+        "rknn": "models/FastVLM-vision-rk3588.rknn"
+      },
+      "1024": {
+        "image_tokens": 256,
+        "onnx": "artifacts/onnx/FastVLM-vision-1024.onnx",
+        "rknn": "models/FastVLM-vision-1024-fp16-rk3588.rknn"
+      }
+    },
+    "preprocessing": {
+      "color": "rgb",
+      "square_padding": [0, 0, 0],
+      "scale": 255.0
+    }
+  },
+  "llm": {
+    "output": "models/FastVLM-1.5B-w8a8-rk3588.rkllm",
+    "quantization": "w8a8",
+    "build_max_context": 4096,
+    "build_npu_cores": 3,
+    "calibration_resolutions": [1024, 512],
+    "calibration_directory": "artifacts/calibration"
+  },
+  "multimodal": {
+    "image_start": "",
+    "image_end": "",
+    "image_content": "<image>"
+  },
+  "runtime": {
+    "rkllm_version": "1.3.0",
+    "rknn_toolkit2_version": "2.3.2",
+    "default_max_context": 4096,
+    "default_max_new_tokens": 256,
+    "default_vision_cores": 3
+  }
+}
